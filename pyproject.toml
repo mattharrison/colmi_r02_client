@@ -1,14 +1,32 @@
-[tool.poetry]
+[project]
 name = "colmi-r02-client"
 version = "0.1.0"
 description = "Connect to Colmi R02 smart ring over BLE"
-authors = ["Wesley Ellis <tahnok@gmail.com>"]
+author = "Wesley Ellis <tahnok@gmail.com>"
 readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [ 
+  "bleak>=0.22.2", 
+  "asyncclick" 
+]
 
-[tool.poetry.dependencies]
-python = ">=3.11,<3.14"
-bleak = "^0.22.2"
-asyncclick = "^8.1.7.2"
+[tool.uv]
+dev-dependencies = [
+    "freezegun>=1.5.1",
+    "hypothesis>=6.115.5",
+    "mypy>=1.13.0",
+    "pytest>=8.3.3",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.7.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+#[build-system]
+#requires = ["poetry-core"]
+#build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 colmi_r02_client = "colmi_r02_client.cli:cli_client"
@@ -31,9 +49,6 @@ pdoc = "^14.6.1"
 [tool.poetry.group.nvim-lsp.dependencies]
 pyright = "^1.1.382.post0"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
 warn_return_any = true
